@@ -20,6 +20,28 @@ module.exports = {
           loader: 'babel-loader',
         },
       },
+      {
+        test: /\.s?css$/,
+        use: [{
+          loader: 'style-loader',
+        }, {
+          loader: 'css-loader',
+        }, {
+          loader: 'sass-loader',
+        }],
+      },
+      {
+        test: /\.jpe?g$|\.gif$|\.png$|\.svg$|\.woff$|\.woff2$|\.ttf$|\.otf$|\.eot$|\.ico$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              context: path.join(__dirname, 'src'),
+              name: '[path][name].[ext]',
+            },
+          },
+        ],
+      },
     ],
   },
   devServer: {
