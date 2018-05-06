@@ -51,7 +51,7 @@
   },
   "jest": {
     "moduleNameMapper": {
-      "^.+\\.(?!(js(?:x|on)?)).+$": "<rootDir>/__jest__/stub.js"
+      "^.+\\.s?css$": "<rootDir>/__jest__/stub.js"
     },
     "transform": {
       "^.+\\.jsx?$": "babel-jest"
