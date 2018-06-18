@@ -4,6 +4,6 @@ import { render } from 'react-dom';
 
 render(
   (
-    <h1 style={{ color: 'red' }}>Hello World!</h1>
+    <h1 style={{ color: 'green' }}>Hello World!</h1>
   ), document.getElementById('root'),
 );
