@@ -61,6 +61,7 @@
     "setupFiles": [
       "raf/polyfill",
       "<rootDir>/__jest__/setup.js"
-    ]
+    ],
+    "testEnvironment": "node"
   }
 }
