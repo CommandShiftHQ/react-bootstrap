@@ -48,4 +48,7 @@ module.exports = {
     contentBase: path.join(__dirname),
     historyApiFallback: true,
   },
+  node: {
+    fs: 'empty',
+  },
 };
