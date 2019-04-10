@@ -1,5 +1,6 @@
 import React from 'react';
+import Profile from './profile';
 
-const App = () => <div>Hello World</div>;
+const App = () => <Profile />;
 
 export default App;
