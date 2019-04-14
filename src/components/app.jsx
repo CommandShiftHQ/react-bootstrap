@@ -2,8 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import LocationDetails from './location-details';
 import ForecastSummaries from './forecast-summaries';
+import '../styles/app.scss';
 
-const App = props  => (
+const App = props => (
   <div className="forecast">
 
     <LocationDetails
@@ -25,14 +26,6 @@ App.propTypes = {
 
   forecasts: PropTypes.array.isRequired,
 };
-
-
-/* const App = (props) => {
-    return <h1>{`Hello ${props.name}`}</h1>;
-    }
-    App.defaultProps = {
-        name: 'World',
-      }; */
 
 
 export default App;

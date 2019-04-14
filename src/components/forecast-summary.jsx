@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+
 
 const ForecastSummary = props => (
   <div>
@@ -11,8 +11,7 @@ const ForecastSummary = props => (
 
     <div className="forecast-summary__icon"><span>{props.icon}</span></div>
   </div>
-)
-
+);
 
 
 export default ForecastSummary;
