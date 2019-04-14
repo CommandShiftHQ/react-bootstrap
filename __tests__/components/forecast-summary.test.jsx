@@ -36,7 +36,7 @@ it('renders a description', () => {
       icon="mockIcon"
     />
   ));
-  expect(wrapper.find('.forecast-summary__description').text).toEqual('mockDescription');
+  expect(wrapper.find('.forecast-summary__description').text()).toEqual('mockDescription');
 });
 
 it('renders an icon', () => {
