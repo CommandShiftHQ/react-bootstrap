@@ -2,17 +2,17 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import ForecastSummary from '../../src/components/forecast-summary';
 
-it('renders the date, description, icon and max temp for the day', () => {
+it('renders the date', () => {
   const wrapper = shallow((
     <ForecastSummary
-      date="mockDate"
+      date= {1555496618}
       temperature="mockTemperature"
       description="mockDescription"
       icon="mockIcon"
     />
 
   ));
-  expect(wrapper.find('.forecast-summary__date').text()).toEqual('mockDate');
+  expect(wrapper.find('.forecast-summary__date').text()).toEqual('Mon 19th Jan');
 });
 
 it('renders the temperature for the day', () => {
@@ -45,8 +45,8 @@ it('renders an icon', () => {
       date="mockDate"
       temperature="mockTemperature"
       description="mockDescription"
-      icon="mockIcon"
+      icon="<WeatherIcon />"
     />
   ));
-  expect(wrapper.find('.forecast-summary__icon').text()).toEqual('mockIcon');
+  expect(wrapper.find('.forecast-summary__icon').text()).toEqual('<WeatherIcon />');
 });
