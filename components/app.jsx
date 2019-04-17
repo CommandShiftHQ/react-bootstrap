@@ -4,6 +4,7 @@ import LocationDetails from './location-details';
 import ForecastSummaries from './forecast-summaries';
 
 import '../src/styles/app.scss';
+import ForecastDetails from './forecast-detils';
 
 const App = props => {
   return (
@@ -14,6 +15,9 @@ const App = props => {
       />
       <br />
       <ForecastSummaries forecasts={props.forecasts} />
+      <br />
+      <br />
+      <ForecastDetails detail={props.forecasts} />
     </div>
   );
 };
