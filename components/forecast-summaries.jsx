@@ -1,21 +1,19 @@
-import React from "react";
-import ForecastSummary from "./forcast-summary";
+import React from 'react';
+import ForecastSummary from './forcast-summary';
+import '../src/styles/forecast-summaries.scss';
 
 const ForecastSummaries = props => {
   return (
     <div className="forecast-summaries">
-      {props.forecasts.map((forecasts, index) => {
-        console.log("forecasts", forecasts.temperature);
-        return (
-          <ForecastSummary
-            key={forecasts.date}
-            date={forecasts.date}
-            description={forecasts.description}
-            icon={forecasts.icon}
-            temperature={forecasts.temperature.max}
-          />
-        );
-      })}
+      {props.forecasts.map(forecast => (
+        <ForecastSummary
+          key={forecast.date}
+          date={forecast.date}
+          description={forecast.description}
+          icon={forecast.icon}
+          temperature={forecast.temperature.max}
+        />
+      ))}
     </div>
   );
 };

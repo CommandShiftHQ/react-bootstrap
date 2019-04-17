@@ -1,23 +1,19 @@
-import React from "react";
-import PropTypes from "prop-types";
-import LocationDetails from "./location-details";
-import ForecastSummaries from "./forecast-summaries";
+import React from 'react';
+import PropTypes from 'prop-types';
+import LocationDetails from './location-details';
+import ForecastSummaries from './forecast-summaries';
+
+import '../src/styles/app.scss';
 
 const App = props => {
   return (
-    <div>
+    <div className="forecast">
       <LocationDetails
         city={props.location.city}
         country={props.location.country}
       />
       <br />
-      <ForecastSummaries
-        forecasts={props.forecasts}
-        // temperature={props.forecasts.temperature.max}
-        // date={props.forecasts.date}
-        // description={props.forecasts.description}
-        // icon={props.forecasts.icon}
-      />
+      <ForecastSummaries forecasts={props.forecasts} />
     </div>
   );
 };
@@ -25,7 +21,7 @@ const App = props => {
 App.propTypes = {
   location: PropTypes.shape({
     city: PropTypes.string,
-    country: PropTypes.string
+    country: PropTypes.string.isRequired
   }).isRequired,
   forecasts: PropTypes.array.isRequired
 };

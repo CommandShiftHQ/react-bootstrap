@@ -1,15 +1,24 @@
-import React from "react";
+import React from 'react';
+import WeatherIcon from 'react-icons-weather';
+import moment from 'moment';
+
+const dateStyle = {
+  color: '#f5d6ff'
+};
 
 const ForecastSummary = props => {
   return (
     <div className="forecast-summary">
-      <span>date: {props.date}</span>
+      <span style={dateStyle}>{moment(props.date).format('ddd-Do-MMM')}</span>
+      <hr />
       <br />
       <span>description: {props.description}</span>
       <br />
-      <span>icon: {props.icon}</span>
+      <WeatherIcon name="owm" iconId={props.icon} />
       <br />
-      <span>temperature Max: {props.temperature}</span>
+      <span className="forecast-summary-temperature">
+        temperature Max: {props.temperature}℃
+      </span>
     </div>
   );
 };
