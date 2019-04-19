@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 
 /* detail is an array of objects,
     each object has keys:
@@ -12,29 +13,20 @@ wind: {speed: 13, direction: "s"}
 
 */
 const ForecastDetails = props => {
-  const {
-    date,
-    description,
-    humidity,
-    icon,
-    temperature,
-    wind
-  } = props.detail[0];
+  const { date, wind, humidity, temperature } = props.detail;
   return (
     <div>
-      <span>date:{date}</span>
-      <br />
-      <span>description:{description}</span>
-      <br />
-      <span>humidity:{humidity}</span>
-      <br />
-      <span>icon:{icon}</span>
+      <span>date: {moment(date).format('Do-MMM-YY ')}</span>
       <br />
       <span>
-        temperature min: {temperature.min} max:{temperature.max}
+        temperature min: {temperature.min}°C max: {temperature.max}°C
       </span>
       <br />
-      <span>wind speed: {wind}</span>
+      <span>humidity: {humidity}%</span>
+      <br />
+      <span>wind speed: {wind.speed} mph</span>
+      <br />
+      <span>wind direction: {wind.direction.toUpperCase()}</span>
     </div>
   );
 };

@@ -6,9 +6,12 @@ const dateStyle = {
   color: '#f5d6ff'
 };
 const iconStyle = {
+  display: 'flex',
+  justifyContent: 'center',
+  // alignItems: 'space-around',
   position: 'relative',
   fontSize: '80px',
-  border: '3px solid black',
+  // border: '3px solid black',
   color: '#bcf2ef'
 };
 
