@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/MCRcodes/react-bootstrap#readme",
   "dependencies": {
+    "axios": "^0.18.0",
     "moment": "^2.24.0",
     "prop-types": "^15.6.1",
     "raf": "^3.4.0",

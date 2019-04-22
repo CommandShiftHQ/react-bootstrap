@@ -23,6 +23,8 @@ const ForecastSummaries = props => (
 
             temperature={forecast.temperature.max}
 
+            onSelect={props.onForecastSelect}
+
           />
 
         ))
