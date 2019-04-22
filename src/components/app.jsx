@@ -22,6 +22,7 @@ class App extends React.Component {
 
     };
     this.handleForecastSelect = this.handleForecastSelect.bind(this);
+    this.handleLocationSearch = this.handleLocationSearch.bind(this);
   }
 
   handleForecastSelect(date) {
@@ -39,6 +40,17 @@ class App extends React.Component {
     });
   }
 
+  handleLocationSearch(city) {
+    axios.get(`https://mcr-codes-weather.herokuapp.com/forecast?city=${city}`).then(response => {
+      this.setState({
+        forecasts: response.data.forecasts,
+        location: response.data.location,
+      });
+    }).catch(() => {
+      alert('City not found. Try again.')
+    })
+  }
+
   render() {
     const selectedForecast = (this.state.forecasts.find(forecast => forecast.date === this.state.selectedDate)
     );
@@ -51,8 +63,8 @@ class App extends React.Component {
 
           country={this.state.location.country}
         />
-        
-        <SearchForm />
+
+        <SearchForm handleLocationSearch={this.handleLocationSearch} />
         <br />
 
         <ForecastSummaries
