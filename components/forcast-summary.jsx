@@ -3,16 +3,20 @@ import WeatherIcon from 'react-icons-weather';
 import moment from 'moment';
 
 const dateStyle = {
-  color: '#f5d6ff'
+  color: '#f5d6ff',
 };
 const iconStyle = {
   display: 'flex',
   justifyContent: 'center',
-  // alignItems: 'space-around',
   position: 'relative',
   fontSize: '80px',
-  // border: '3px solid black',
-  color: '#bcf2ef'
+  color: '#bcf2ef',
+};
+
+const btnStyle = {
+  display: 'flex',
+  justifyContent: 'center',
+  position: 'relative',
 };
 
 const ForecastSummary = props => {
@@ -28,6 +32,10 @@ const ForecastSummary = props => {
       <span className="forecast-summary-temperature">
         temperature Max: {props.temperature}℃
       </span>
+      <br />
+      <button style={btnStyle} onClick={() => props.onSelect(props)}>
+        More Details
+      </button>
     </div>
   );
 };

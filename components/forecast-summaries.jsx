@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ForecastSummary from './forcast-summary';
 import '../src/styles/forecast-summaries.scss';
 
@@ -7,6 +8,7 @@ const ForecastSummaries = props => {
     <div className="forecast-summaries">
       {props.forecasts.map(forecast => (
         <ForecastSummary
+          onSelect={props.onForecastSelect}
           key={forecast.date}
           date={forecast.date}
           description={forecast.description}
@@ -16,6 +18,10 @@ const ForecastSummaries = props => {
       ))}
     </div>
   );
+};
+
+ForecastSummaries.propTypes = {
+  onSelect: PropTypes.func,
 };
 
 export default ForecastSummaries;

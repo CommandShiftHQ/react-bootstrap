@@ -1,42 +1,70 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import LocationDetails from './location-details';
 import ForecastSummaries from './forecast-summaries';
+import ForecastDetails from './forecast-detils';
 
 import '../src/styles/app.scss';
-import ForecastDetails from './forecast-detils';
+
+const URL = 'https://mcr-codes-weather.herokuapp.com/forecast?city=';
+const town = 'hull';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedDate: this.props.forecasts[0]
+      selectedDate: 0,
+      forecasts: [],
+      location: {
+        city: '',
+        country: '',
+      },
     };
   }
 
+  componentDidMount() {
+    fetch(`${URL}${town}`)
+      .then(data => data.json())
+      .then(data => {
+        this.setState({ forecasts: data.forecasts });
+        this.setState({
+          location: {
+            city: data.location.city,
+            country: data.location.country,
+          },
+        });
+      });
+  }
+
+  handleForecastSelected = date => {
+    this.setState({
+      selectedDate: date,
+    });
+  };
+
   render() {
+    const chooseSelectedForecastByDate = this.state.forecasts.find(forecast => {
+      return forecast.date === this.state.selectedDate.date;
+    });
+
     return (
       <div className="forecast">
         <LocationDetails
-          city={this.props.location.city}
-          country={this.props.location.country}
+          city={this.state.location.city}
+          country={this.state.location.country}
         />
         <br />
-        <ForecastSummaries forecasts={this.props.forecasts} />
+        <ForecastSummaries
+          forecasts={this.state.forecasts}
+          onForecastSelect={this.handleForecastSelected}
+        />
         <br />
         <br />
-        <ForecastDetails detail={this.state.selectedDate} />
+        {chooseSelectedForecastByDate && (
+          <ForecastDetails detail={chooseSelectedForecastByDate} />
+        )}
       </div>
     );
   }
 }
-
-App.propTypes = {
-  location: PropTypes.shape({
-    city: PropTypes.string,
-    country: PropTypes.string.isRequired
-  }).isRequired,
-  forecasts: PropTypes.array.isRequired
-};
 
 export default App;
