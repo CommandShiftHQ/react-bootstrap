@@ -15,32 +15,30 @@ class App extends React.Component {
       selectedDate: 0,
       forecasts: [],
       location: {
-        city: '',
+        city: 'manchester',
         country: '',
       },
-      cityToSearchFor: 'hull',
+      // cityToSearchFor: 'hull',
     };
   }
 
-  componentDidMount() {
-    fetch(`${URL}${this.state.cityToSearchFor}`)
+  goFetchNow = city => {
+    fetch(`${URL}${city}`)
       .then(data => data.json())
       .then(data => {
-        this.setState({ forecasts: data.forecasts });
         this.setState({
+          forecasts: data.forecasts,
           location: {
             city: data.location.city,
             country: data.location.country,
           },
         });
       });
-  }
-
-  cityInputer = city => {
-    event.preventDefault();
-    console.log('inside the cityinputer -> ', city);
-    this.setState({ cityToSearchFor: city });
   };
+
+  componentDidMount() {
+    this.goFetchNow(this.state.location.city);
+  }
 
   handleForecastSelected = date => {
     this.setState({
@@ -53,7 +51,8 @@ class App extends React.Component {
       return forecast.date === this.state.selectedDate.date;
     });
 
-    console.log(this.state.cityToSearchFor);
+    // console.log(this.state);
+
     return (
       <div className="forecast">
         <LocationDetails
@@ -61,7 +60,7 @@ class App extends React.Component {
           country={this.state.location.country}
         />
         <br />
-        <SearchForm cityCallback={this.cityInputer} />
+        <SearchForm cityCallback={this.goFetchNow} />
         <br />
         <ForecastSummaries
           forecasts={this.state.forecasts}

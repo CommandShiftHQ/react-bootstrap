@@ -1,5 +1,5 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
 const LocationDetails = props => (
   <h1 className="title">
@@ -9,7 +9,7 @@ const LocationDetails = props => (
 
 LocationDetails.propTypes = {
   city: PropTypes.string.isRequired,
-  country: PropTypes.string.isRequired
+  country: PropTypes.string.isRequired,
 };
 
 export default LocationDetails;
