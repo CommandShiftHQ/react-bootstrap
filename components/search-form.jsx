@@ -11,6 +11,9 @@ class SearchForm extends React.Component {
   handleSearch = e => {
     e.preventDefault();
     this.props.cityCallback(this.state.searchText);
+    this.setState({
+      searchText: '',
+    });
   };
 
   handlechange = e => this.setState({ searchText: e.target.value });
@@ -23,11 +26,7 @@ class SearchForm extends React.Component {
           type="text"
           onChange={this.handlechange}
         />
-        <button
-          onClick={this.handleSearch}
-          // onClick={() => console.log(this.state.searchText)}
-          type="submit"
-        >
+        <button onClick={this.handleSearch} type="submit">
           Search
         </button>
       </form>
