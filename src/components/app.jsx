@@ -7,12 +7,15 @@ import ForecastDetails from './forecast-details';
 import axios from 'axios';
 import SearchForm from './search-form';
 
+const URL_DATA = 'https://mcr-codes-weather.herokuapp.com/forecast';
+
 class App extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-
+      // put error in state- ?google
+      searchError: '',
       selectedDate: 0,
       forecasts: [],
       location: {
@@ -32,7 +35,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('https://mcr-codes-weather.herokuapp.com/forecast').then(response => {
+    axios.get(URL_DATA).then(response => {
       this.setState({
         forecasts: response.data.forecasts,
         location: response.data.location,
@@ -41,18 +44,19 @@ class App extends React.Component {
   }
 
   handleLocationSearch(city) {
-    axios.get(`https://mcr-codes-weather.herokuapp.com/forecast?city=${city}`).then(response => {
+    axios.get(`${URL_DATA }${city}`).then(response => {
       this.setState({
         forecasts: response.data.forecasts,
         location: response.data.location,
       });
     }).catch(() => {
-      alert('City not found. Try again.')
-    })
+      alert('Location not found. Try again.');
+    });
   }
 
   render() {
-    const selectedForecast = (this.state.forecasts.find(forecast => forecast.date === this.state.selectedDate)
+    const selectedForecast = (
+      this.state.forecasts.find(forecast => forecast.date === this.state.selectedDate)
     );
 
     return (
@@ -68,8 +72,9 @@ class App extends React.Component {
         <br />
 
         <ForecastSummaries
-          forecasts={this.state.forecasts} 
-          onForecastSelect={this.handleForecastSelect}/>
+          forecasts={this.state.forecasts}
+          onForecastSelect={this.handleForecastSelect}
+        />
 
         {selectedForecast && <ForecastDetails forecast={selectedForecast} />
        }

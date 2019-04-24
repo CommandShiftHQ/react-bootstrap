@@ -21,8 +21,11 @@ class SearchForm extends React.Component {
           className="inputField"
           onChange={this.handleInputChange}
           value={this.state.searchText}
+          placeholder="Type a city..."
         />
-        <button onClick={() => this.props.handleLocationSearch(this.state.searchText)}> Search </button>
+        <button onClick={() => this.props.handleLocationSearch(this.state.searchText)}>
+         Search
+        </button>
       </div>
     );
   }
