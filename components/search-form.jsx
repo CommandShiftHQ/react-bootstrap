@@ -22,6 +22,7 @@ class SearchForm extends React.Component {
     return (
       <form>
         <input
+          placeholder="Search for your UK city"
           value={this.state.searchText}
           type="text"
           onChange={this.handlechange}

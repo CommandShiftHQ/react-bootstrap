@@ -50,22 +50,18 @@ class App extends React.Component {
       return forecast.date === this.state.selectedDate.date;
     });
 
-    const currentPosition = 
-
     return (
       <div className="forecast">
         <LocationDetails
           city={this.state.location.city}
           country={this.state.location.country}
         />
-        <br />
         <SearchForm cityCallback={this.goFetchNow} />
         <br />
         <ForecastSummaries
           forecasts={this.state.forecasts}
           onForecastSelect={this.handleForecastSelected}
         />
-        <br />
         <br />
         {chooseSelectedForecastByDate && (
           <ForecastDetails detail={chooseSelectedForecastByDate} />

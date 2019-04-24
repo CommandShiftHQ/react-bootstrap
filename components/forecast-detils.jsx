@@ -5,6 +5,7 @@ const detailStyle = {
   border: '3px black solid',
   borderRadius: '7px',
   padding: '10px 10px',
+  marginBottom: '7px',
 };
 
 const forecastDetailsWrapper = {
