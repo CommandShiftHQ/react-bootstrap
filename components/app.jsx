@@ -18,7 +18,6 @@ class App extends React.Component {
         city: 'manchester',
         country: '',
       },
-      // cityToSearchFor: 'hull',
     };
   }
 
@@ -51,7 +50,7 @@ class App extends React.Component {
       return forecast.date === this.state.selectedDate.date;
     });
 
-    // console.log(this.state);
+    const currentPosition = 
 
     return (
       <div className="forecast">
