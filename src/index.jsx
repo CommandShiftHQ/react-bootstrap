@@ -1,5 +1,6 @@
 import 'raf/polyfill';
 import React from 'react';
 import { render } from 'react-dom';
+import App from '../components/app';
 
-render(<div>Hello World!</div>, document.getElementById('root'));
+render(<App />, document.getElementById('root'));
