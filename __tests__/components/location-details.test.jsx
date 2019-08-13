@@ -10,5 +10,5 @@ it('renders the passed city and country in a h1 tag', () => {
 
   const text = wrapper.find('h1').text();
 
-  expect (text).toEqual('foo, bar');
+  expect(text).toEqual('foo, bar');
 });
