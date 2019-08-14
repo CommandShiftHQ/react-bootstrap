@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import LocationDetails from './location-details';
 import ForecastSummaries from './forecast-summaries';
 
+import '../styles/app.scss';
+
 const App = props => (
   <div className="forecast">
     <LocationDetails
