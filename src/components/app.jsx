@@ -6,17 +6,37 @@ import ForecastDetails from './forecast-details';
 
 import '../styles/app.scss';
 
-console.log(ForecastDetails);
-const App = props => (
-  <div>
-    <LocationDetails
-      city={props.location.city}
-      country={props.location.country}
-    />
-    <ForecastSummaries forecasts={props.forecasts} />
-    <ForecastDetails forecast={props.forecasts[0]} />
-  </div>
-);
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      selectedDate: this.props.forecasts[0].date,
+    };
+  }
+
+  handleForecastSelect(date) {
+    this.setState({
+      selectedDate: date,
+    });
+  }
+
+  render() {
+    // eslint-disable-next-line max-len
+    const selectedForecast = this.props.forecasts.find(forecast => forecast.date === this.state.selectedDate);
+
+    return (
+      <React.Fragment>
+        <LocationDetails
+          city={this.props.location.city}
+          country={this.props.location.country}
+        />
+        <ForecastSummaries forecasts={this.props.forecasts} onForecastSelect={this.handleForecastSelect} />
+        <ForecastDetails forecast={selectedForecast} />
+      </React.Fragment>
+    );
+  }
+}
 
 App.propTypes = {
   location: PropTypes.shape({

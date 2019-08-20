@@ -13,6 +13,7 @@ const ForecastSummary = props => (
     <div className="forecast-summary__icon">
       <WeatherIcon name="owm" iconId={props.icon} />
     </div>
+    <button onClick={() => console.log('Hi')}>More details</button>
   </h1>
 );
 
