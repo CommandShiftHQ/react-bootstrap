@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 
 const ForecastDetails = props => {
+  console.log(props);
   return (
     <h1>
       <div className="forecast-details__date">
