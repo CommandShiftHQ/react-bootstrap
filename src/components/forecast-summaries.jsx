@@ -6,20 +6,17 @@ const ForecastSummaries = props => (
   <div className="forecast-summaries">
     {
         props.forecasts.map(forecast => {
-          console.log(forecast.date);
           return (
-      
-          <ForecastSummary
-            key={forecast.date}
-            date={forecast.date}
-            description={forecast.description}
-            icon={forecast.icon}
-            temperature={forecast.temperature.max}
-            onSelect={props.onForecastSelect}
-          />
-        )
-          }
-)
+            <ForecastSummary
+              key={forecast.date}
+              date={forecast.date}
+              description={forecast.description}
+              icon={forecast.icon}
+              temperature={forecast.temperature.max}
+              onSelect={props.onForecastSelect}
+            />
+          );
+        })
       }
   </div>
 );
