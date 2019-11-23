@@ -4,6 +4,7 @@ import LocationDetails from './location-details';
 import ForecastSummaries from './forecast-summaries';
 import ForecastDetails from './forecast-details';
 import Axios from 'axios';
+import SearchBar from './search-form';
 
 import '../styles/app.scss';
 
@@ -19,6 +20,7 @@ class App extends React.Component {
       },
     };
     this.handleForecastSelect = this.handleForecastSelect.bind(this);
+    this.handleGetCity = this.handleGetCity.bind(this);
   }
 
   handleForecastSelect(date) {
@@ -27,8 +29,8 @@ class App extends React.Component {
     });
   }
 
-  componentDidMount() {
-    const url = 'https://mcr-codes-weather.herokuapp.com/forecast?city=Bolton';
+  handleGetCity(city) {
+    const url = `https://mcr-codes-weather.herokuapp.com/forecast?city=${city}`;
     fetch(url)
       .then(response => response.json())
       .then(data => this.setState({
@@ -40,11 +42,18 @@ class App extends React.Component {
       }));
   }
 
+  componentDidMount() {
+    this.handleGetCity('Manchester');
+  }
+
   render() {
     const selectedForecast =
     this.state.forecasts.find(forecast => forecast.date === this.state.selectedDate);
     return (
       <React.Fragment>
+        <SearchBar
+          onSearch={this.handleGetCity}
+        />
         <LocationDetails
           city={this.state.location.city}
           country={this.state.location.country}
