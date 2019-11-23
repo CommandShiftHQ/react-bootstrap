@@ -13,7 +13,6 @@ const ForecastDetails = props => {
       <div className="forecast-details__temperature-min">Min Temperature: {props.forecast.temperature.min}°C</div>
       <div className="forecast-details__humidity">Humidity: {props.forecast.humidity}%</div>
       <div className="forecast-details__wind-speed">Wind Speed: {props.forecast.wind.speed}mph</div>
-      <div className="forecast-details__wind-direction">{props.forecast.wind.direction}</div>
     </h1>
   );
 };
