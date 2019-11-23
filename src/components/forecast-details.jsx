@@ -9,10 +9,10 @@ const ForecastDetails = props => {
       <div className="forecast-details__date">
         <span>{moment(props.forecast.date).format('ddd Do MMM')}</span>
       </div>
-      <div className="forecast-details__temperature-max">{props.forecast.temperature.max}</div>
-      <div className="forecast-details__temperature-min">{props.forecast.temperature.min}</div>
-      <div className="forecast-details__humidity">{props.forecast.humidity}</div>
-      <div className="forecast-details__wind-speed">{props.forecast.wind.speed}</div>
+      <div className="forecast-details__temperature-max">Max Temperature: {props.forecast.temperature.max}°C</div>
+      <div className="forecast-details__temperature-min">Min Temperature: {props.forecast.temperature.min}°C</div>
+      <div className="forecast-details__humidity">Humidity: {props.forecast.humidity}%</div>
+      <div className="forecast-details__wind-speed">Wind Speed: {props.forecast.wind.speed}mph</div>
       <div className="forecast-details__wind-direction">{props.forecast.wind.direction}</div>
     </h1>
   );
